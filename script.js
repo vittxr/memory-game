@@ -26,22 +26,29 @@ function flipCard() {
     secondCard = this;
     hasFlippedCard = false; 
     chechForMatch();
+    if(firstCard != secondCard) {
+        return animationCard()
+    } 
 }
 
 function chechForMatch() {
     if(firstCard.dataset.card === secondCard.dataset.card) {
         disableCards();
-        return;
-    } 
-
+        return
+    } else {
     unflipCards();
+    }
 }
 
 function disableCards() {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
 
+    firstCard.classList.add('animation2');
+    secondCard.classList.add('animation2');
+
     resetBoard();
+    
 }
 
 function unflipCards() {
@@ -49,7 +56,10 @@ function unflipCards() {
     setTimeout(() => {
         firstCard.classList.remove('flip');
         secondCard.classList.remove('flip');
-
+        
+        firstCard.classList.remove('animation');
+        secondCard.classList.remove('animation');
+        
        resetBoard();
     }, 1500);
 }
@@ -69,3 +79,8 @@ function resetBoard() {
 cards.forEach((card) => {
     card.addEventListener('click', flipCard)
 });
+
+function animationCard() {
+     firstCard.classList.add('animation');
+     secondCard.classList.add('animation');
+} 

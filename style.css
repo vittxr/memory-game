@@ -12,6 +12,10 @@ body {
     align-items: center;
 }
 
+#image {
+    display: flex;
+}
+
 #inicio {
   width: 350px;
   height: 200px;
@@ -47,6 +51,7 @@ body {
     transform: scale(1);
     transform-style: preserve-3d; /*não deixa o elemento achatado*/
     transition: transform .9s;
+    
 }
 
 .card:active {
@@ -75,3 +80,18 @@ body {
     transform: rotateY(180deg);
 }
 
+.animation {
+    animation: wrong 100ms ease-in infinite alternate;
+}
+
+@keyframes wrong {
+    from {
+        border: 3px solid white;
+ } to {
+      border: 3px solid red;
+}
+}
+
+.animation2 {
+    border: 3px solid green;
+}
